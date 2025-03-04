@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Favoris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mes Favoris</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="panier.html">Panier (<span id="cart-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="favoris-list" id="favoris-list">
+            <!-- Les produits favoris seront injectés ici -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mon E-commerce. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            afficherFavoris();
+        });
+
+        function afficherFavoris() {
+            const favorisList = document.getElementById("favoris-list");
+            let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+
+            favorisList.innerHTML = "";
+
+            if (favoris.length === 0) {
+                favorisList.innerHTML = "<p>Aucun favori pour le moment.</p>";
+                return;
+            }
+
+            favoris.forEach(produit => {
+                const produitHTML = `
+                    <div class="product-card">
+                        <img src="${produit.image}" alt="${produit.name}">
+                        <h3>${produit.name}</h3>
+                        <p>Prix: ${produit.price.toFixed(2)} €</p>
+                        <button class="remove-favorite-btn" onclick="supprimerFavori(${produit.id})">Retirer</button>
+                    </div>
+                `;
+                favorisList.innerHTML += produitHTML;
+            });
+        }
+
+        function supprimerFavori(id) {
+            let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+            favoris = favoris.filter(produit => produit.id !== id);
+            localStorage.setItem("favoris", JSON.stringify(favoris));
+            afficherFavoris();
+        }
+    </script>
+</body>
+</html>
+
