@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mon Panier</h1>
+        <nav>
+            <a href="index.html">Retour à la boutique</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Produits dans votre panier</h2>
+            <div class="cart-list">
+                <!-- Les produits seront inject�s ici par JavaScript -->
+            </div>
+            <div class="cart-summary">
+                <h3>Total : <span id="cart-total">0.00 €</span></h3>
+                <button id="checkout-btn">Passer à la caisse</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="panier.js"></script>
+
+</body>
+</html>
