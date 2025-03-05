@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Inscription</h1>
+    </header>
+    <main class="content">
+        <section id="login">
+        <form id="register-form">
+            <label for="email">Email :</label>
+            <input type="email" id="email" required>
+
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+        </section>
+        <p id="register-message" style="color: red;"></p>
+    </main>
+
+
+
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('register-message');
+
+            const response = await fetch('register.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, username, password })
+            });
+
+            const data = await response.json();
+            if (data.message) {
+                alert(data.message);
+                window.location.href = 'login.html';
+            } else {
+                message.textContent = data.error;
+            }
+        });
+    </script>
+</body>
+</html>
