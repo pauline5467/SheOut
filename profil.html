@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil - SheOut</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Profil</h1>
+        <nav>
+            <a href="index.html">Retour à la boutique</a>
+        </nav>
+    </header>
+
+    <main class="profil-content">
+        <div id="profile-info">
+            <p><strong>Nom:</strong> <span id="user-name">Chargement...</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Chargement...</span></p>
+            <button id="edit-btn">Modifier</button>
+            <button id="logout-btn">Déconnexion</button>
+        </div>
+
+        <div id="edit-form" style="display: none;">
+            <h3>Modifier vos informations</h3>
+            <form id="update-profile-form">
+                <label for="edit-name">Nom:</label>
+                <input type="text" id="edit-name" placeholder="Entrez votre nom" required>
+                
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" placeholder="Entrez votre email" required>
+                
+                <button type="submit">Enregistrer</button>
+                <button type="button" id="cancel-btn">Annuler</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="profil.js"></script>
+
+</body>
+</html>
+
+
+
+
+
